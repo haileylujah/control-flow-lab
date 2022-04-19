@@ -19,3 +19,25 @@
 #
 # After setting the likely season, you can use another if...elif...else statement to "adjust" if
 # the day number falls within a certain range.
+
+
+month = input('Enter the month of the year (Jan - Dec): ')
+while True:
+    try:
+        day = int(input('Enter the day of the month: '))
+        if day < 1 or day > 31:
+            raise ValueError
+        break
+    except ValueError:
+        print("Invalid day. The number must be in the range of 1-31.")
+
+if month in ('Dec', 'Jan', 'Feb'):
+    season = 'Fall' if month == 'Dec' and day < 21 else 'Winter'
+elif month in ('Mar', 'Apr', 'May'):
+    season = 'Winter' if month == 'Mar' and day < 20 else 'Spring'
+elif month in ('Jun', 'Jul', 'Aug'):
+    season = 'Spring' if month == 'Jun' and day < 21 else 'Summer'
+else:
+    season = 'Summer' if month == 'Sep' and day < 22 else 'Fall'
+
+print(f'{month} {day} is in {season}')
