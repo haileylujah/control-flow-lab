@@ -21,7 +21,8 @@
 # the day number falls within a certain range.
 
 
-month = input('Enter the month of the year (Jan - Dec): ')
+month = input('Enter the month of the year (first three letters): ').upper()
+# day = int(input('Enter the day of the month: '))
 while True:
     try:
         day = int(input('Enter the day of the month: '))
@@ -31,13 +32,29 @@ while True:
     except ValueError:
         print("Invalid day. The number must be in the range of 1-31.")
 
-if month in ('Dec', 'Jan', 'Feb'):
-    season = 'Fall' if month == 'Dec' and day < 21 else 'Winter'
-elif month in ('Mar', 'Apr', 'May'):
-    season = 'Winter' if month == 'Mar' and day < 20 else 'Spring'
-elif month in ('Jun', 'Jul', 'Aug'):
-    season = 'Spring' if month == 'Jun' and day < 21 else 'Summer'
+if month in 'DEC' and day > 20:
+    print(f'{month} {day} is in Winter')
+elif month in 'DEC' and day < 21:
+    print(f'{month} {day} is in Fall')
+elif month in ('JAN', 'FEB'):
+    print(f'{month} {day} is in Winter')
+elif month in 'MAR' and day > 19:
+    print(f'{month} {day} is in Spring')
+elif month in 'MAR' and day < 20:
+    print(f'{month} {day} is in Winter')
+elif month in ('APR', 'MAY'):
+    print(f'{month} {day} is in Spring')
+elif month in 'JUN' and day > 20:
+    print(f'{month} {day} is in Summer')
+elif month in 'JUN' and day < 21:
+    print(f'{month} {day} is in Spring')
+elif month in ('JUL', 'AUG'):
+    print(f'{month} {day} is in Summer')
+elif month in 'SEP' and day > 21:
+    print(f'{month} {day} is in Fall')
+elif month in 'SEP' and day < 22:
+    print(f'{month} {day} is in Summer')
+elif month in ('OCT', 'NOV'):
+    print(f'{month} {day} is in Fall')
 else:
-    season = 'Summer' if month == 'Sep' and day < 22 else 'Fall'
-
-print(f'{month} {day} is in {season}')
+    print("Please enter a correct month")
